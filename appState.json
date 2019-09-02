@@ -1,0 +1,99 @@
+{
+  "EDITOR_STATE": {
+    "allProjectFiles": {
+      "c1dc1d2d-01b5-44b1-b7ef-9b79d98270d2": {
+        "id": "c1dc1d2d-01b5-44b1-b7ef-9b79d98270d2",
+        "parent": null,
+        "name": "indunilsns1",
+        "type": "DIRECTORY",
+        "isDirectory": true,
+        "children": [
+          "7f66627c-15ca-4700-970e-b2b87aeb7bdb"
+        ],
+        "isRemovable": false,
+        "filePath": "indunilsns1"
+      },
+      "7f66627c-15ca-4700-970e-b2b87aeb7bdb": {
+        "id": "7f66627c-15ca-4700-970e-b2b87aeb7bdb",
+        "parent": "c1dc1d2d-01b5-44b1-b7ef-9b79d98270d2",
+        "name": "lambda.js",
+        "type": "JS_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "indunilsns1/lambda.js",
+        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n    sns.publish({\n        Message: 'msg1',\n        Subject: 'subject1',\n        MessageAttributes: {},\n        MessageStructure: 'String',\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:testIndunilSNS2'\n    }).promise()\n        .then(data => {\n            // your code goes here\n        })\n        .catch(err => {\n            // error handling goes here\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "config": {
+          "runtime": "nodejs8.10",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        },
+        "triggers": []
+      }
+    },
+    "deletedFiles": [],
+    "rootNode": "c1dc1d2d-01b5-44b1-b7ef-9b79d98270d2",
+    "openFiles": [
+      "7f66627c-15ca-4700-970e-b2b87aeb7bdb"
+    ],
+    "currentFileId": "7f66627c-15ca-4700-970e-b2b87aeb7bdb",
+    "resources": {
+      "snsusEast1testIndunilSNS2": {
+        "name": "snsusEast1testIndunilSNS2",
+        "type": "SNS",
+        "config": {
+          "topicMode": 0,
+          "topicName": "testIndunilSNS2",
+          "topicArn": "arn:aws:sns:us-east-1:318300609668:testIndunilSNS2",
+          "topicRegion": "us-east-1",
+          "snsType": 0,
+          "topicDisplayName": "IndunilSNS",
+          "subscriptions": []
+        }
+      }
+    },
+    "customTemplate": {
+      "dialect": null,
+      "definitions": null
+    },
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      }
+    ],
+    "packageJSON": {
+      "dependencies": {
+        "aws-sdk": {
+          "name": "aws-sdk",
+          "language": "javascript",
+          "version": "2.176.0",
+          "dev": true,
+          "notRemovable": false
+        }
+      }
+    }
+  },
+  "PROJECT_META": {
+    "projectName": "indunilsns1",
+    "projectDescription": "",
+    "projectVersion": "1.0.0",
+    "projectRegion": "us-east-1",
+    "platform": "AWS",
+    "platformRegions": {},
+    "lastSave": 1567398179704
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "indunilsns1",
+      "url": "https://github.com/Indunil1992/indunilsns1"
+    }
+  }
+}
