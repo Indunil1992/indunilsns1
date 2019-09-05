@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunilsns1/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n    sns.getTopicAttributes({\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:testsnsindunil'\n    }).promise()\n        .then(data => {\n            console.log(\"display DATA\");\n            console.log(data);\n            // your code goes here\n        })\n        .catch(err => {\n            console.log(\"display error\");\n            console.log(err);\n            // error handling goes here\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n    sns.listSubscriptionsByTopic({\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:testsnsindunil'\n    }).promise()\n        .then(data => {\n            console.log(\"dataaaa\");\n            console.log(data);\n            // your code goes here\n        })\n        .catch(err => {\n            console.log(\"errorr\");\n            console.log(err);\n            // error handling goes here\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -37,8 +37,8 @@
           }
         ],
         "testCases": {
-          "f618ea86-3884-41df-9c25-d4c4dd617234": {
-            "id": "f618ea86-3884-41df-9c25-d4c4dd617234",
+          "44e9ad9c-1b35-437c-b7a8-a12acb5575a5": {
+            "id": "44e9ad9c-1b35-437c-b7a8-a12acb5575a5",
             "name": "Test event",
             "functionId": "7f66627c-15ca-4700-970e-b2b87aeb7bdb",
             "event": "{\r\n    \"key1\": \"value1\",\r\n    \"key2\": \"value2\",\r\n    \"key3\": \"value3\"\r\n}",
@@ -54,23 +54,6 @@
     ],
     "currentFileId": "7f66627c-15ca-4700-970e-b2b87aeb7bdb",
     "resources": {
-      "snsusEast1testsnsindunil": {
-        "name": "snsusEast1testsnsindunil",
-        "type": "SNS",
-        "config": {
-          "topicMode": 1,
-          "topicName": "testsnsindunil",
-          "topicArn": "arn:aws:sns:us-east-1:318300609668:testsnsindunil",
-          "topicRegion": "us-east-1",
-          "snsType": 0,
-          "subscriptions": [
-            {
-              "type": "email",
-              "endpoint": "sachithrarajapakse1992@gmail.com"
-            }
-          ]
-        }
-      },
       "apigusEast1sachithraAPInameget": {
         "name": "apigusEast1sachithraAPInameget",
         "type": "API_GATEWAY",
@@ -95,6 +78,23 @@
           "stageName": "Test",
           "stageDeploymentId": "z8rbt4",
           "mode": 1
+        }
+      },
+      "snsusEast1testsnsindunil": {
+        "name": "snsusEast1testsnsindunil",
+        "type": "SNS",
+        "config": {
+          "topicMode": 1,
+          "topicName": "testsnsindunil",
+          "topicArn": "arn:aws:sns:us-east-1:318300609668:testsnsindunil",
+          "topicRegion": "us-east-1",
+          "snsType": 0,
+          "subscriptions": [
+            {
+              "type": "http",
+              "endpoint": "http://"
+            }
+          ]
         }
       }
     },
@@ -131,7 +131,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1567672269029
+    "lastSave": 1567673956670
   },
   "VCS_STATE": {
     "provider": "GitHub",
