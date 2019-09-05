@@ -7,7 +7,7 @@ exports.handler = function (event, context, callback) {
     }).promise()
         .then(data => {
             console.log("display DATA");
-             console.log(data);
+            console.log(data);
             // your code goes here
         })
         .catch(err => {

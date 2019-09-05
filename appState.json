@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunilsns1/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n    sns.getTopicAttributes({\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:testsnsindunil'\n    }).promise()\n        .then(data => {\n            console.log(\"display DATA\");\n             console.log(data);\n            // your code goes here\n        })\n        .catch(err => {\n            console.log(\"display error\");\n            console.log(err);\n            // error handling goes here\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n    sns.getTopicAttributes({\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:testsnsindunil'\n    }).promise()\n        .then(data => {\n            console.log(\"display DATA\");\n            console.log(data);\n            // your code goes here\n        })\n        .catch(err => {\n            console.log(\"display error\");\n            console.log(err);\n            // error handling goes here\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -30,7 +30,21 @@
           "memory": 128,
           "layers": []
         },
-        "triggers": []
+        "triggers": [
+          {
+            "resourceName": "apigusEast1sachithraAPInameget",
+            "config": {}
+          }
+        ],
+        "testCases": {
+          "f618ea86-3884-41df-9c25-d4c4dd617234": {
+            "id": "f618ea86-3884-41df-9c25-d4c4dd617234",
+            "name": "Test event",
+            "functionId": "7f66627c-15ca-4700-970e-b2b87aeb7bdb",
+            "event": "{\r\n    \"key1\": \"value1\",\r\n    \"key2\": \"value2\",\r\n    \"key3\": \"value3\"\r\n}",
+            "eventTemplate": "hello-world"
+          }
+        }
       }
     },
     "deletedFiles": [],
@@ -49,7 +63,38 @@
           "topicArn": "arn:aws:sns:us-east-1:318300609668:testsnsindunil",
           "topicRegion": "us-east-1",
           "snsType": 0,
-          "subscriptions": []
+          "subscriptions": [
+            {
+              "type": "email",
+              "endpoint": "sachithrarajapakse1992@gmail.com"
+            }
+          ]
+        }
+      },
+      "apigusEast1sachithraAPInameget": {
+        "name": "apigusEast1sachithraAPInameget",
+        "type": "API_GATEWAY",
+        "config": {
+          "selectedRegion": "us-east-1",
+          "apiMode": 1,
+          "apiName": "sachithraAPIname",
+          "apiId": "052p9kjn18",
+          "endpointType": "REGIONAL",
+          "rootResourceId": "zrjp6rdv3b",
+          "existingResources": {
+            "/": "zrjp6rdv3b"
+          },
+          "resourceMode": 1,
+          "resourcePath": "/",
+          "resourceName": "",
+          "resourceId": "zrjp6rdv3b",
+          "restMethod": "GET",
+          "proxyIntegration": false,
+          "enableCORS": false,
+          "stageMode": 1,
+          "stageName": "Test",
+          "stageDeploymentId": "z8rbt4",
+          "mode": 1
         }
       }
     },
@@ -86,7 +131,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1567667215294
+    "lastSave": 1567672269029
   },
   "VCS_STATE": {
     "provider": "GitHub",
