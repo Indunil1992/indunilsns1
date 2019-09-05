@@ -2,17 +2,17 @@ let AWS = require('aws-sdk');
 const sns = new AWS.SNS();
 
 exports.handler = function (event, context, callback) {
-    sns.publish({
-        Message: 'msg1',
-        Subject: 'subject1',
-        MessageAttributes: {},
-        MessageStructure: 'String',
-        TopicArn: 'arn:aws:sns:us-east-1:318300609668:testIndunilSNS2'
+    sns.getTopicAttributes({
+        TopicArn: 'arn:aws:sns:us-east-1:318300609668:testsnsindunil'
     }).promise()
         .then(data => {
+            console.log("display DATA");
+             console.log(data);
             // your code goes here
         })
         .catch(err => {
+            console.log("display error");
+            console.log(err);
             // error handling goes here
         });
 

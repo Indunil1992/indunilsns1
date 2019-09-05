@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunilsns1/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n    sns.publish({\n        Message: 'msg1',\n        Subject: 'subject1',\n        MessageAttributes: {},\n        MessageStructure: 'String',\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:testIndunilSNS2'\n    }).promise()\n        .then(data => {\n            // your code goes here\n        })\n        .catch(err => {\n            // error handling goes here\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n    sns.getTopicAttributes({\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:testsnsindunil'\n    }).promise()\n        .then(data => {\n            console.log(\"display DATA\");\n             console.log(data);\n            // your code goes here\n        })\n        .catch(err => {\n            console.log(\"display error\");\n            console.log(err);\n            // error handling goes here\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -40,16 +40,15 @@
     ],
     "currentFileId": "7f66627c-15ca-4700-970e-b2b87aeb7bdb",
     "resources": {
-      "snsusEast1testIndunilSNS2": {
-        "name": "snsusEast1testIndunilSNS2",
+      "snsusEast1testsnsindunil": {
+        "name": "snsusEast1testsnsindunil",
         "type": "SNS",
         "config": {
-          "topicMode": 0,
-          "topicName": "testIndunilSNS2",
-          "topicArn": "arn:aws:sns:us-east-1:318300609668:testIndunilSNS2",
+          "topicMode": 1,
+          "topicName": "testsnsindunil",
+          "topicArn": "arn:aws:sns:us-east-1:318300609668:testsnsindunil",
           "topicRegion": "us-east-1",
           "snsType": 0,
-          "topicDisplayName": "IndunilSNS",
           "subscriptions": []
         }
       }
@@ -87,7 +86,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1567398179704
+    "lastSave": 1567667215294
   },
   "VCS_STATE": {
     "provider": "GitHub",
